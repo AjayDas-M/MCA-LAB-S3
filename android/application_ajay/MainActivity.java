@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,11 @@ EditText bookname;
 Button btn,nextbtn;
 String b;
 Spinner spinner1;
+int image_pos;
+ImageView image;
 String[] ar = {"Ajay","Anu"};
+int[] im ={R.drawable.sherlock,R.drawable.dracula};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +49,13 @@ String[] ar = {"Ajay","Anu"};
         btn = findViewById(R.id.btn);
         nextbtn = findViewById(R.id.nextbtn);
         spinner1 = findViewById(R.id.spinner1);
+        image =findViewById(R.id.image1);
+
+
         btn.setOnClickListener(this);
         nextbtn.setOnClickListener(this);
         spinner1.setOnItemSelectedListener(this);
+
 
     }
 
@@ -91,11 +100,13 @@ String[] ar = {"Ajay","Anu"};
             b = bookname.getText().toString();
             showbook.setText("Bookname : "+ b);
             Toast.makeText(this,"showing the book name",Toast.LENGTH_LONG).show();
+
         }
         if(v.getId() == nextbtn.getId())
         {
             Intent i =  new Intent(this, MainActivity2.class);
             i.putExtra("book",b);
+            i.putExtra("image_pos",image_pos);
             startActivity(i);
         }
 
@@ -105,6 +116,8 @@ String[] ar = {"Ajay","Anu"};
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(this, parent.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
         showbook.setText(ar[position]);
+        image_pos = position;
+
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.example.ajay;
+import static com.example.ajay.R.*;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
 TextView details;
+ImageView image1;
+int image_pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,9 +26,17 @@ TextView details;
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        int[] im ={R.drawable.sherlock,R.drawable.dracula};
         details = findViewById(R.id.details);
+        image1 = findViewById(id.image1);
+
         Intent i = getIntent();
         String name = i.getStringExtra("book");
+        image_pos = i.getIntExtra("image_pos",image_pos);
+
         details.setText("Book Name : "+name);
+        image1.setImageResource(im[image_pos]);
+
     }
 }
