@@ -26,7 +26,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 TextView showbook;
 EditText bookname;
-Button btn,nextbtn;
+Button btn,nextbtn,btnlist;
 String b;
 Spinner spinner1;
 int image_pos;
@@ -50,8 +50,10 @@ int[] im ={R.drawable.sherlock,R.drawable.dracula};
         nextbtn = findViewById(R.id.nextbtn);
         spinner1 = findViewById(R.id.spinner1);
         image =findViewById(R.id.image1);
+        btnlist = findViewById(R.id.btnlist);
 
 
+        btnlist.setOnClickListener(this);
         btn.setOnClickListener(this);
         nextbtn.setOnClickListener(this);
         spinner1.setOnItemSelectedListener(this);
@@ -108,6 +110,12 @@ int[] im ={R.drawable.sherlock,R.drawable.dracula};
             i.putExtra("book",b);
             i.putExtra("image_pos",image_pos);
             startActivity(i);
+        }
+
+        if(v.getId() == btnlist.getId())
+        {
+            Intent list = new Intent(this, listview.class);
+            startActivity(list);
         }
 
     }

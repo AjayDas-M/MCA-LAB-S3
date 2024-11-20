@@ -46,6 +46,11 @@
         android:text="NEXT"
         android:id="@+id/nextbtn"
         android:layout_gravity="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnlist"
+        android:text="Listview"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
